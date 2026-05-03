@@ -91,14 +91,14 @@ function EarthMesh({ onCountryClick }: { onCountryClick: (name: string) => void 
     material.uniforms.sunDir.value.copy(sunVec)
   })
 
-  const handleClick = (e: any) => {
+ const handleClick = (e: any) => {
     e.stopPropagation()
-    const point = e.point.clone()
-    // World point → local sphere coords
-    const local = point.clone().applyMatrix4(
+    if (!meshRef.current) return
+    const local = e.point.clone().applyMatrix4(
       meshRef.current.matrixWorld.clone().invert()
     )
-    const lat = Math.asin(local.y / 2) * (180 / Math.PI)
+    local.normalize()
+    const lat = Math.asin(local.y) * (180 / Math.PI)
     const lon = Math.atan2(local.x, local.z) * (180 / Math.PI)
     const country = getCountryFromLatLon(lat, lon)
     onCountryClick(country)
