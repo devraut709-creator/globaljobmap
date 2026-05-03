@@ -46,7 +46,7 @@ function getSunDirection(): Vector3 {
 }
 
 function EarthMesh() {
-  const meshRef = useRef<any>()
+  const meshRef = useRef<any>(null)
   const invMat = useMemo(() => new Matrix4(), [])
   const sunVec = useMemo(() => new Vector3(), [])
 
