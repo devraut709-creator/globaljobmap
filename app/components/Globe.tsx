@@ -110,13 +110,10 @@ function EarthMesh({ onCountryClick }: { onCountryClick: (name: string) => void 
 
  const handleClick = (e: any) => {
     e.stopPropagation()
-    if (!meshRef.current) return
-    const local = e.point.clone().applyMatrix4(
-      meshRef.current.matrixWorld.clone().invert()
-    )
-    local.normalize()
-    const lat = Math.asin(local.y) * (180 / Math.PI)
-    const lon = Math.atan2(local.x, local.z) * (180 / Math.PI)
+    if (!e.uv) return
+    // UV se lat/lon — bilkul accurate!
+    const lon = e.uv.x * 360 - 180
+    const lat = 90 - e.uv.y * 180
     const country = getCountryFromLatLon(lat, lon)
     onCountryClick(country)
   }
