@@ -115,7 +115,7 @@ function EarthMesh({ onCountryClick }: { onCountryClick: (name: string) => void 
     const lon = e.uv.x * 360 - 180
     const lat = 90 - e.uv.y * 180
     const country = getCountryFromLatLon(lat, lon)
-    onCountryClick(country)
+    onCountryClick(`${country} | lat:${lat.toFixed(1)} lon:${lon.toFixed(1)}`)
   }
 
   return (
