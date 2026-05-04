@@ -82,9 +82,8 @@ function EarthMesh({ onCountryClick }: { onCountryClick: (name: string) => void 
     fragmentShader,
   }), [dayTex, nightTex])
 
-  useFrame(() => {
+ useFrame(() => {
     if (!meshRef.current) return
-    meshRef.current.rotation.y += 0.0008
     invMat.copy(meshRef.current.matrixWorld).invert()
     sunVec.copy(getSunDirection())
     sunVec.transformDirection(invMat)
@@ -120,7 +119,7 @@ export default function Globe() {
       <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
         <ambientLight intensity={0.05} />
         <EarthMesh onCountryClick={setSelected} />
-        <OrbitControls enableZoom={true} enablePan={false} />
+        <OrbitControls enableZoom={true} enablePan={false} autoRotate={true} autoRotateSpeed={0.5} />
       </Canvas>
 
       {/* Country Popup */}
