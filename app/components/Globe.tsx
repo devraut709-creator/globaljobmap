@@ -115,7 +115,7 @@ function EarthMesh({ onCountryClick }: { onCountryClick: (name: string) => void 
     const lon = e.uv.x * 360 - 180
     const lat = e.uv.y * 180 - 90
     const country = getCountryFromLatLon(lat, lon)
-    onCountryClick(`${country} | lat:${lat.toFixed(1)} lon:${lon.toFixed(1)}`)
+    onCountryClick(country)
   }
 
   return (
@@ -139,31 +139,46 @@ export default function Globe() {
 
       {/* Country Popup */}
       {selected && (
-        <div style={{
-          position: 'fixed', bottom: 40, left: '50%',
-          transform: 'translateX(-50%)',
-          background: 'rgba(0,0,0,0.85)',
-          border: '1px solid #00ffcc',
-          borderRadius: 16, padding: '20px 40px',
-          color: '#fff', fontSize: 22, fontWeight: 'bold',
-          textAlign: 'center', zIndex: 100
-        }}>
-          {selected}
-          <div style={{ fontSize: 14, color: '#00ffcc', marginTop: 8 }}>
-            Jobs coming soon...
-          </div>
-          <button
-            onClick={() => setSelected(null)}
-            style={{
-              marginTop: 12, padding: '6px 20px',
-              background: 'none', border: '1px solid #fff',
-              color: '#fff', borderRadius: 8, cursor: 'pointer'
-            }}
-          >
-            Close ✕
-          </button>
-        </div>
-      )}
+  <div style={{
+    position: 'fixed', bottom: 40, left: '50%',
+    transform: 'translateX(-50%)',
+    background: 'rgba(0,0,0,0.85)',
+    border: '1px solid #00ffcc',
+    borderRadius: 16, padding: '20px 40px',
+    color: '#fff', fontSize: 22, fontWeight: 'bold',
+    textAlign: 'center', zIndex: 100, minWidth: 300
+  }}>
+    {selected}
+    <div style={{ fontSize: 13, color: '#aaa', marginTop: 6 }}>
+      Top Jobs Coming Soon 🚀
     </div>
-  )
-}
+    <div style={{ 
+      marginTop: 12, display: 'flex', 
+      flexDirection: 'column', gap: 8 
+    }}>
+      <div style={{ background: 'rgba(0,255,204,0.1)', 
+        border: '1px solid #00ffcc33', borderRadius: 8, 
+        padding: '8px 12px', fontSize: 14 }}>
+        💼 Software Engineer — $120k
+      </div>
+      <div style={{ background: 'rgba(0,255,204,0.1)', 
+        border: '1px solid #00ffcc33', borderRadius: 8, 
+        padding: '8px 12px', fontSize: 14 }}>
+        💼 Product Manager — $110k
+      </div>
+      <div style={{ background: 'rgba(0,255,204,0.1)', 
+        border: '1px solid #00ffcc33', borderRadius: 8, 
+        padding: '8px 12px', fontSize: 14 }}>
+        💼 Data Analyst — $90k
+      </div>
+    </div>
+    <button
+      onClick={() => setSelected(null)}
+      style={{
+        marginTop: 12, padding: '6px 20px',
+        background: 'none', border: '1px solid #fff',
+        color: '#fff', borderRadius: 8, cursor: 'pointer'
+      }}
+    >Close ✕</button>
+  </div>
+)}
