@@ -46,18 +46,36 @@ function getSunDirection(): Vector3 {
 
 // Lat/Lon se Country detect karo
 function getCountryFromLatLon(lat: number, lon: number): string {
-  if (lat > 8 && lat < 37 && lon > 68 && lon < 97) return '🇮🇳 India'
-  if (lat > 24 && lat < 49 && lon > -125 && lon < -66) return '🇺🇸 USA'
-  if (lat > 49 && lat < 60 && lon > -8 && lon < 2) return '🇬🇧 UK'
-  if (lat > 47 && lat < 55 && lon > 6 && lon < 15) return '🇩🇪 Germany'
-  if (lat > -44 && lat < -10 && lon > 113 && lon < 154) return '🇦🇺 Australia'
-  if (lat > 41 && lat < 83 && lon > -141 && lon < -52) return '🇨🇦 Canada'
-  if (lat > 30 && lat < 45 && lon > 130 && lon < 145) return '🇯🇵 Japan'
-  if (lat > 22 && lat < 26 && lon > 51 && lon < 56) return '🇦🇪 UAE'
-  if (lat > 35 && lat < 72 && lon > -10 && lon < 40) return '🌍 Europe'
-  if (lat > -35 && lat < 37 && lon > -18 && lon < 52) return '🌍 Africa'
-  if (lat > -56 && lat < 13 && lon > -82 && lon < -34) return '🌎 South America'
-  if (lat > 1 && lat < 55 && lon > 40 && lon < 68) return '🌏 Middle East / Central Asia'
+  // India — bada region
+  if (lat > 6 && lat < 38 && lon > 65 && lon < 100) return '🇮🇳 India'
+  // Japan
+  if (lat > 25 && lat < 50 && lon > 128 && lon < 148) return '🇯🇵 Japan'
+  // UAE + Gulf
+  if (lat > 18 && lat < 30 && lon > 48 && lon < 60) return '🇦🇪 UAE'
+  // UK — Europe ke pehle check karo
+  if (lat > 48 && lat < 62 && lon > -9 && lon < 3) return '🇬🇧 UK'
+  // Germany
+  if (lat > 46 && lat < 56 && lon > 5 && lon < 16) return '🇩🇪 Germany'
+  // Canada — USA ke pehle
+  if (lat > 48 && lat < 85 && lon > -145 && lon < -50) return '🇨🇦 Canada'
+  // USA
+  if (lat > 24 && lat < 50 && lon > -130 && lon < -65) return '🇺🇸 USA'
+  // Australia
+  if (lat > -45 && lat < -8 && lon > 110 && lon < 158) return '🇦🇺 Australia'
+  // Russia
+  if (lat > 50 && lat < 80 && lon > 30 && lon < 180) return '🇷🇺 Russia'
+  // China
+  if (lat > 18 && lat < 55 && lon > 100 && lon < 135) return '🇨🇳 China'
+  // Europe
+  if (lat > 35 && lat < 72 && lon > -12 && lon < 45) return '🌍 Europe'
+  // South America
+  if (lat > -58 && lat < 15 && lon > -85 && lon < -30) return '🌎 South America'
+  // Africa
+  if (lat > -38 && lat < 40 && lon > -20 && lon < 55) return '🌍 Africa'
+  // Middle East
+  if (lat > 10 && lat < 42 && lon > 35 && lon < 65) return '🌏 Middle East'
+  // Southeast Asia
+  if (lat > -12 && lat < 25 && lon > 95 && lon < 128) return '🌏 Southeast Asia'
   return '🌊 Ocean'
 }
 
