@@ -119,7 +119,7 @@ export default function Globe() {
       <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
         <ambientLight intensity={0.05} />
         <EarthMesh onCountryClick={setSelected} />
-        <OrbitControls enableZoom={true} enablePan={false} autoRotate={true} autoRotateSpeed={0.5} />
+        <OrbitControls enableZoom={true} enablePan={false} />
       </Canvas>
 
       {/* Country Popup */}
