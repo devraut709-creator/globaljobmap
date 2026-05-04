@@ -113,7 +113,7 @@ function EarthMesh({ onCountryClick }: { onCountryClick: (name: string) => void 
     if (!e.uv) return
     // UV se lat/lon — bilkul accurate!
     const lon = e.uv.x * 360 - 180
-    const lat = 90 - e.uv.y * 180
+    const lat = e.uv.y * 180 - 90
     const country = getCountryFromLatLon(lat, lon)
     onCountryClick(`${country} | lat:${lat.toFixed(1)} lon:${lon.toFixed(1)}`)
   }
